@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Spoon - Fine Dining Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ea2a33;
+            --secondary-color: #f8f4f4;
+            --text-primary: #181111;
+            --text-secondary: #886364;
+            --accent-color: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-primary);
+            background-color: #fefefe;
+            line-height: 1.6;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background-color: #c51d26;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .hero-btn:hover {
+            background-color: #c51d26;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Menu Section */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .category-btn {
+            background-color: var(--secondary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .menu-item-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-title h3 {
+            font-size: 1.2rem;
+        }
+        
+        .menu-item-price {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .menu-item-desc {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .menu-item-order {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-item-order:hover {
+            background-color: #c51d26;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        /* Team Section */
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--secondary-color);
+        }
+        
+        .team-member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .team-member-role {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        /* Reservation Section */
+        .reservation {
+            background-color: var(--secondary-color);
+        }
+        
+        .reservation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .reservation-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .reservation-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .reservation-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .reservation-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .reservation-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c51d26;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text-primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links h3,
+        .footer-hours h3,
+        .footer-newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after,
+        .footer-hours h3::after,
+        .footer-newsletter h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .reservation-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdnBN02my4NyXMhbrHczf6ieYM8b0OFeZQefi2kPhQc-iYoCiftG4kBdsFNpyM_DBDqe2OWHN-VWGiNWi3g08gjEGsJ81qvOxRex9gIJ-tAxM14KZGTZqCZDe8CL7BkFeFSP0JloBYkXYn9o5BnATIHRxDxqojCuPXHZ6CDa6xGxxSuK-CSqPLuKhYkpZSXGhBVFOG_neVJKZN1PYzCyErM9LmXQlIKZX-2pE23dj8qdyiQjBgdzCpAcEtC1K-dxK3dna5R4sk8ic" alt="The Golden Spoon Logo">
+                    <div class="logo-text">The Golden Spoon</div>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#reservation">Reservations</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="nav-btn" onclick="scrollToSection('reservation')">Reserve a Table</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="font-display">Exquisite Dining Experience</h1>
+            <p>Indulge in our culinary masterpiece crafted with passion and the finest ingredients</p>
+            <button class="hero-btn" onclick="scrollToSection('menu')">View Our Menu</button>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="font-display">Our Menu</h2>
+                <p>Explore our culinary creations made with the finest ingredients</p>
+            </div>
+            
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="appetizers">Appetizers</button>
+                <button class="category-btn" data-category="mains">Main Courses</button>
+                <button class="category-btn" data-category="desserts">Desserts</button>
+                <button class="category-btn" data-category="beverages">Beverages</button>
+            </div>
+            
+            <div class="menu-items">
+                <!-- Appetizers -->
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHk8fvmBMbwHd8XxMDqOOc1B0KzM7A5ds5E_SmFQ-lpDR1Rll0GemWW-yLHUvO0Pj7G30E0H9u21sq3YqVuMC_qboY6eBS1qKuWsABWoecdqdkmEyr7cS3SV1JnHe7YqUWOE_-a83ryNpvPIIH9oM0O63IHYhnJeyovF7_AFhliReYqIJmUXL4sBaaoJgo_0t6e11OM2JfWjpWjfvLGwP8bSuM8dpva3GraYzp6J9pZ5lp7oYzYPfrPMQeVXbymYmEoM3ptVbX3tE" alt="Fried Calamari">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Fried Calamari</h3>
+                            <span class="menu-item-price">$12.99</span>
+                        </div>
+                        <p class="menu-item-desc">Crispy calamari rings served with a zesty marinara sauce.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5snO6y6WxudVwQxp4olr0zJV6xMKDIsLDIhf67vC9TKakWND2fJa60oZzQdxhY3a2TQiFTlD3HmdHE5eZQChWpffc1INJMK_v1vaiRS82ImkAAP9MG3FgLH4MqMPB13mrCb-gZnbE1js3B3Bsl4W2qbeiu51iFN6mZIbLEaYdEvKmXi1gzC5wodTCp5yKri4m3uPwPLDaL-oZaqXSWrB8EZISyDO9J2CMA-O6y3561LCXvPRGcxIIXpZop0veaYlwD0KQS8K6EII" alt="Caprese Salad">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Caprese Salad</h3>
+                            <span class="menu-item-price">$10.99</span>
+                        </div>
+                        <p class="menu-item-desc">Fresh mozzarella, ripe tomatoes, and basil drizzled with balsamic glaze.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO7-g_QaUxJbYvrT6oUnNkze_6Tyo9owBDeLCF6y5lntNFMKbIPIrKZQfr32hlJ_bZGfj4eYfp9SDndPrmfgz55_eZI0KF-EwWBPDkqeC_e2jyWPE1EXtOSmGljYDFEx4cF3w6qFPhEaToR4qCb7oaYc3oMtcOp9uoS8gucSWsVEsF98vxB9cFL6ZzF9V8VTqICKjjv0K-cIiKstNlIL_gh5DWIcsVAxj1b4SBEHknc3A4gwD9WWMXl5XwaT7DHnVXMkp2KL6i4QM" alt="Spinach & Artichoke Dip">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Spinach & Artichoke Dip</h3>
+                            <span class="menu-item-price">$9.99</span>
+                        </div>
+                        <p class="menu-item-desc">Creamy spinach and artichoke dip served with warm pita bread.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <!-- Additional Appetizers -->
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1619894991209-32b8fb6d6aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnJ1c2NoZXR0YXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Bruschetta">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Bruschetta</h3>
+                            <span class="menu-item-price">$8.99</span>
+                        </div>
+                        <p class="menu-item-desc">Toasted bread topped with fresh tomatoes, garlic, and basil.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <!-- Main Courses -->
+                <div class="menu-item" data-category="mains">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcDTMnx3VyuKOZrg6AQEMVnwVBbbe0PlUWuSb0Uav-H65rslyWJJVCCoQPUx-3mEqmBdpzZ5lBRgqsimnDd9KzsUw2DBEwRSx6iy0lqM0lywIuLIL5uN2NUZCpJUgE77jJD4z6oz931-ypXhKkKOxfCUwLWHCT5J7c8XIwzPcIFbKuTpPaGYIV-4HmkGRVxiejEdFXO2IDmFdNVqYskJMNkkBhhbyesxsxzu1Mx3mGAMhMaTuONELaF02bwptuIPzJx25aHE6WujQ" alt="Grilled Salmon">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Grilled Salmon</h3>
+                            <span class="menu-item-price">$22.99</span>
+                        </div>
+                        <p class="menu-item-desc">Grilled salmon fillet with lemon-dill sauce, served with roasted vegetables.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="mains">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBar-M0T-BFaYzVQdrsdpnV09H3Y7JYqh5zaZlOkaSZFpTjd0N6SLAoKO8v_EGeFnjbyobG71QSGqD54_x9VMYUvJTUhY0aQKKdVEySOMcZTOaHJo6x-Lhu0rQAKJSNiPMw-1PA1ZiKpATAbT7muQp70qu4LkDPVtzWqpW1jYGuTB0F1PEO8spomrT1A0vsiVG5-RtzQ3nxjSH0-srHaOtg7Pdp1eSQbkZSfPl7KGqrojTvj18HYC0_S_TCduXjEt9_DSPXKkbJEvg" alt="Chicken Marsala">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Chicken Marsala</h3>
+                            <span class="menu-item-price">$18.99</span>
+                        </div>
+                        <p class="menu-item-desc">Tender chicken breast in a creamy mushroom sauce, served with mashed potatoes.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="mains">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhF5F0mj7bDyuqSUcjqnwYg0oWBdBf2b7fg2vHPW0lyNsMBS7TEyx6xJjWmHRoZB5pPokV0mCeDEvEe9rLo4DSsH-8vi8V5jezaBHpdKOVjb-YF9qb6TKJIRO491TREyGh37mVW7DRcU4ThjO_gqXNm38h7ZHL7mQ5uk3VnAeeiybJXwYUblrkK7GJ9q32KcUbPV7XZ7Wosq_6FiDTK_JYQeBnpRxqUqJF1yfD6LL3pkA0qZWxS5u1rMBGFl1fmJYYbuaQDn71Hug" alt="Spaghetti Bolognese">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Spaghetti Bolognese</h3>
+                            <span class="menu-item-price">$16.99</span>
+                        </div>
+                        <p class="menu-item-desc">Classic pasta dish with a rich meat sauce and Parmesan cheese.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <!-- Additional Main Courses -->
+                <div class="menu-item" data-category="mains">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHN0ZWFrJTIwZGlubmVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="Filet Mignon">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Filet Mignon</h3>
+                            <span class="menu-item-price">$29.99</span>
+                        </div>
+                        <p class="menu-item-desc">Premium cut of beef tenderloin, grilled to perfection with herb butter.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGdlDB3lHsoCkkS_wR4XmQ9tUsc22wn9l5l4BLREnaUftKyLPneAIe5eSBX4mAM_TBpf4Z3Ca8vW1TU9QQnGyt7fmcKKr830sWvO-7TNAN65m9ZDJ5mP0a7MxxRLpcMeBSnSbzPWrJcTkaYdBLQuLXQNh7cd-ehljthgXwANTbZYKMpdnnK_nTamaAXrHga2-q_4gOI99KsCAvnQxt6t9OzsAkySzqt5eZGFR5JV8jMol51Ka7_uycm5EiqsKV7uBc0REgHvYCx_g" alt="Chocolate Lava Cake">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Chocolate Lava Cake</h3>
+                            <span class="menu-item-price">$8.99</span>
+                        </div>
+                        <p class="menu-item-desc">Rich chocolate cake with a molten chocolate center, served with vanilla ice cream.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsSwQXVO9W1y-1Cn8QggJOyRmIsEOWOv87AvvY1EkrpkH2-mXFhOxjVq7js_CdiccBVwmh1GvbrSwqtPrg5-rrda6rR4iUW85Ogx_FPqIvuJmvsGZBxPEcuYJA6PVkvnD6K6xPuO0b_OKKa_G5n8bWuCfK0knsRXecGD3vXWwg55xnhWOdzyczRWhOwU4FnmZpcT9FMXCFXP0cnuVgLkqZWoW_GVZmB2kEtx8vBAAkeyQCuSdMT92xHwQ8yTiAfo1Pnll1A6Z00s" alt="Berry Cheesecake">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Berry Cheesecake</h3>
+                            <span class="menu-item-price">$7.99</span>
+                        </div>
+                        <p class="menu-item-desc">Creamy cheesecake with a graham cracker crust, topped with fresh berries.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPyqR1Yrli5u_OY23xMepMjFy9Id3zE-560_cmEJIFZBWrdwD-tjdrKJ6wYBdQ1zNAJZypTa1IsSmPXj_JebrBCnOacooBABqkvRbMSvfvhBcpzeNmukrqLOUjAdcpoxc_mHcM4eoXjbI9yn4QONJs8pbU4Hrha7KD8p4Xko3d7JgU-4aHqYJk9IRlrpla2UNKyD_R9Z481vml53prU2WOZEuNmn9UB7ZU9-7m4wPgCMUMUWc4SB7BKHA6u8qMJ2N28GH5Ozivq0U" alt="Tiramisu">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Tiramisu</h3>
+                            <span class="menu-item-price">$9.99</span>
+                        </div>
+                        <p class="menu-item-desc">Traditional Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <!-- Beverages -->
+                <div class="menu-item" data-category="beverages">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuABKJfKz-CsnhvG4yv3PpdmJ0KZujjFd1Pjy_an_6ul0yc-xRvvr0Rfm76mDjKaJaO_eLBzWTy6CNo8Vt45GWNkRKaE2QXBdbpfkXUmo2dHLab3XTgznWpwGyA0cfpnK1a6xGDmFR68pMk3NGzNmDrWjYNxquB9U9c3urkJJTwQ3BiAp4iqXobvmdSVl3KPrv9Dc90JtUOWqGjqSHXUu88NTenV-2XTT9XybvH9YIQf84H_Rub4R4K4Bnk8yKE5zHi_rfxwJ_-Q744" alt="Wine">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Wine Selection</h3>
+                            <span class="menu-item-price">Varies</span>
+                        </div>
+                        <p class="menu-item-desc">Selection of red and white wines by the glass or bottle.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="beverages">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFUVt1spocOAmYZagfwE3_WnP18IQKWODK4sxCAXPOTMCULgS2yYRZ6zehMefWiIiDXWQk2IP1or7NxIuIoPCUAH25YMXlOUIc3llQeJNrIZBanQocOYyHIVICwbAYPG6tMANKd2I8vuqtfmSSjI1C4CngjHgQH0hM375A3omz33a3b5F8_GYUI_1jAlNf3Xe68S1unX_uxM_Avw1YR4ZhUak6EkwPjwvLD0w2YJ6rWYjn2xJeNDKDujIJPbD02nKuVaKZTOX4p9A" alt="Beer">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Beer Selection</h3>
+                            <span class="menu-item-price">Varies</span>
+                        </div>
+                        <p class="menu-item-desc">Assortment of domestic and imported beers.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="beverages">
+                    <div class="menu-item-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxHZ0w0PsmjLX6FaJ5ngxXoZfi8aKS_XhfvTe0ZAdaQYopsZOCFEDtX9TRnfqSCP6etDX1ERZeAaEA704YIwktTmmIVyn-W2806uX4p3NEzYq-IK9xTlEguYN0OsityoqzK2Db6NkrvWBc7DG28MjDQTkKBERSom1RFAjO_GrEySfv8Ei45bwXvW56YtWvslHveHpj7qgKz4jpzcUNavnQ55wwopOLRvqgSH-dBYQH46YYuGsF47vKKroi2r1FXiwdMY9rRyU9MZ0" alt="Non-Alcoholic">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3>Non-Alcoholic Beverages</h3>
+                            <span class="menu-item-price">$2.99</span>
+                        </div>
+                        <p class="menu-item-desc">Variety of soft drinks, juices, and iced tea.</p>
+                        <button class="menu-item-order">Add to Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="font-display">Our Story</h2>
+                <p>Discover the journey of The Golden Spoon and our passion for culinary excellence</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="Restaurant Interior">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Crafting Memorable Dining Experiences Since 2005</h3>
+                    <p>Nestled in the heart of the city, The Golden Spoon began as a dream to create a dining experience that transcends the ordinary. Founded by Chef Isabella Rossi, our restaurant is a testament to her passion for culinary artistry and her commitment to using only the freshest, locally-sourced ingredients.</p>
+                    <p>At The Golden Spoon, we believe that food is more than just sustenance; it's an experience. Our menu is a reflection of this philosophy, featuring dishes that are both innovative and comforting.</p>
+                    <p>We strive to create a harmonious blend of flavors, textures, and aromas that will tantalize your taste buds and leave you craving more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="font-display">Meet Our Team</h2>
+                <p>The talented individuals who make The Golden Spoon exceptional</p>
+            </div>
+            
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuMsrJ4COL4O315ONwUDfxZcKHlAJr_4h1RSAiQBfY5e1j-Hm_yVfTyb9CH7VxU9qbiLn0IsTChIpKLrjX_IE8tjR61k2bPTL5KsBmZ9OWrY8HNSU8Uh4Le5dBzs5O_mhOuocrNxabCCLsLLQfRo6pwQoXD3nEdZKOEgNY6ScZGKR9ejLTT28v5B_lJM_uBqbhASiUNCad3ZJeAe7VfnAm1j3qGeTAloW6vYonOyOi1f_EGxcCnARBy1q3lgCLsHE4AyfeOw1Z5zg" alt="Isabella Rossi">
+                    </div>
+                    <h3>Isabella Rossi</h3>
+                    <div class="team-member-role">Executive Chef</div>
+                    <p>With over 15 years of culinary experience, Chef Isabella brings creativity and passion to every dish.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDNNeh5TmSrQVoATlCM6hN6tDH3is7I580xOhQSX7h7BYtx3bsgJI2nqwI8jj2jP_44ukgakLO5sKjFzUAW2z0jyVp3x-9cy--Pj4env2O5-zWJJt2BUqWx_INVQog4IHmuUHOkwXfJHh21sforPkIoZOUnEfRRFyrQLGIV6qVAyROUwdDKsZ9k63z08BljX7kDTl5vdPpPTP-0S1Kngvx9magY9GJ6wxe1IefGjI3ClF5IZh4L7DnrflLg0WvdRyOFClyOHLgCd0" alt="Ethan Carter">
+                    </div>
+                    <h3>Ethan Carter</h3>
+                    <div class="team-member-role">Sous Chef</div>
+                    <p>Ethan specializes in French and Italian cuisine, ensuring every plate is a work of art.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGQsVbo9yD0WEYcVER5rgpetM8gFOtjRNdvJTgEft0aFhxNJB0Cu3MWViBoeOkzcV9bWyloRbzZLuATLJsDNqAMLajagpXfIRT_HNoSka5-sykrMBWD5dka4a-KORQ238SVyUud_Z-_NiiC8PXgXOpSuWztaWEYR82AHBRt5rqG_nezPTlPZ_1rY6rN6mz66oJjAasLDdB-_CvCJTwkav7M0QQmnHEwS0YEvtKY39nYoquIVojsBCStM5cWJTdwL9ca_Uf1JA_wnM" alt="Olivia Bennett">
+                    </div>
+                    <h3>Olivia Bennett</h3>
+                    <div class="team-member-role">Restaurant Manager</div>
+                    <p>Olivia ensures every guest has an exceptional dining experience from start to finish.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNob2NvbGF0aWVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="Marcus Johnson">
+                    </div>
+                    <h3>Marcus Johnson</h3>
+                    <div class="team-member-role">Pastry Chef</div>
+                    <p>Marcus creates delightful desserts that provide the perfect ending to our meals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="font-display">Make a Reservation</h2>
+                <p>Book your table for an unforgettable dining experience</p>
+            </div>
+            
+            <div class="reservation-content">
+                <div class="reservation-info">
+                    <div class="reservation-item">
+                        <span class="material-symbols-outlined reservation-icon">location_on</span>
+                        <div class="reservation-details">
+                            <h4>Address</h4>
+                            <p>123 Gourmet Avenue, Culinary District<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-item">
+                        <span class="material-symbols-outlined reservation-icon">phone</span>
+                        <div class="reservation-details">
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-item">
+                        <span class="material-symbols-outlined reservation-icon">email</span>
+                        <div class="reservation-details">
+                            <h4>Email</h4>
+                            <p>reservations@goldenspoon.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-item">
+                        <span class="material-symbols-outlined reservation-icon">schedule</span>
+                        <div class="reservation-details">
+                            <h4>Hours</h4>
+                            <p>Monday - Thursday: 11:00 AM - 10:00 PM<br>
+                               Friday - Saturday: 11:00 AM - 11:00 PM<br>
+                               Sunday: 10:00 AM - 9:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reservation-item">
+                        <span class="material-symbols-outlined reservation-icon">info</span>
+                        <div class="reservation-details">
+                            <h4>Special Requests</h4>
+                            <p>Please let us know about any dietary restrictions or special occasions when making your reservation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reservation-form">
+                    <h3>Book Your Table</h3>
+                    <form id="reservationForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="time" id="time" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" required>
+                                <option value="">Select number of guests</option>
+                                <option value="1">1 person</option>
+                                <option value="2">2 people</option>
+                                <option value="3">3 people</option>
+                                <option value="4">4 people</option>
+                                <option value="5">5 people</option>
+                                <option value="6">6 people</option>
+                                <option value="7">7+ people (please specify in notes)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">Special Requests</label>
+                            <textarea id="notes" placeholder="Any special requests or dietary restrictions?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Reserve Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">The Golden Spoon</div>
+                    <p>Experience culinary excellence at The Golden Spoon, where every dish tells a story and every meal creates a memory.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <span class="material-symbols-outlined">facebook</span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <span class="material-symbols-outlined">instagram</span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <span class="material-symbols-outlined">twitter</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#reservation">Reservations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-hours">
+                    <h3>Opening Hours</h3>
+                    <div class="hours-item">
+                        <span>Monday - Thursday</span>
+                        <span>11:00 AM - 10:00 PM</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Friday - Saturday</span>
+                        <span>11:00 AM - 11:00 PM</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Sunday</span>
+                        <span>10:00 AM - 9:00 PM</span>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address">
+                        <button type="submit" class="newsletter-btn">
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 The Golden Spoon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Filtering Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filter menu items
+                    menuItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Add to Order functionality
+            const orderButtons = document.querySelectorAll('.menu-item-order');
+            orderButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemName = this.parentElement.querySelector('h3').textContent;
+                    alert(`Added ${itemName} to your order!`);
+                });
+            });
+            
+            // Reservation form handling
+            const reservationForm = document.getElementById('reservationForm');
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                
+                alert(`Thank you, ${name}! Your reservation for ${date} at ${time} has been received. We will confirm shortly.`);
+                reservationForm.reset();
+            });
+            
+            // Set minimum date for reservation to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').setAttribute('min', today);
+        });
+        
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
